@@ -16,6 +16,7 @@ parameters:
   description: A comma-seperated list of Deployments to wipe clean on a scheduled basis
   displayName: Deployment Configs
   required: true
+  value: not used delete
 - name: CRON_SCHEDULE
   description: Standard Cron schedule against which to execute the job
   displayName: Cron Schedule
@@ -42,7 +43,7 @@ objects:
     runPolicy: Serial
     source:
       git:
-        uri: https://github.com/benemon/openshift-clean-slate
+        uri: https://github.com/mcanoy/openshift-clean-slate
       type: Git
     strategy:
       dockerStrategy:
@@ -56,7 +57,7 @@ objects:
     - imageChange: {}
       type: ImageChange
     
-- apiVersion: batch/v2alpha1
+- apiVersion: batch/v1beta1
   kind: CronJob
   metadata:
     name: ${JOB_NAME}
